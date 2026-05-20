@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence">
+  <meta name="keywords" content="VISTAQA, GROVE, Visual Question Answering, VQA, Visual Grounding, Segmentation, Multimodal Evaluation, MLLM">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/vistaqa.css">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+<style>
+/* Qualitative carousel */
+.qual-tabs{
+  margin: 1.25rem 0 1.5rem;
+}
+.qual-tab{
+  border: 1px solid #d0d7e2;
+  background: #f7f9fc;
+  padding: 10px 16px;
+  margin: 6px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.qual-tab:hover{
+  background: #edf4ff;
+}
+.qual-tab.active{
+  background: #1f4e8c;
+  color: #fff;
+  border-color: #1f4e8c;
+}
+.qual-carousel{
+  position: relative;
+  text-align: center;
+  margin-top: 1rem;
+}
+.qual-carousel img{
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  background: #fff;
+}
+.qual-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: none;
+  background: rgba(31, 78, 140, 0.85);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 38px;
+}
+.qual-arrow:hover{
+  background: rgba(31, 78, 140, 1);
+}
+.qual-prev{
+  left: 8px;
+}
+.qual-next{
+  right: 8px;
+}
+.qual-dots{
+  margin-top: 16px;
+}
+.qual-dot{
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background: #c8d0dc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+.qual-dot.active{
+  background: #1f4e8c;
+}
+@media (max-width: 768px){
+  .qual-tab{
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .qual-arrow{
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<section class="hero vista-hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">VISTAQA:</h1>
+
+          <h2 class="subtitle is-3 publication-subtitle"> Benchmarking Joint Visual Question Answering and Pixel-Level Evidence
+            
+          </h2>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://mozhgan91.github.io/">Mozhgan Nasr Azadani</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://yimuwangcs.github.io/">Yimu Wang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://vistaqa.github.io">Yongpeng Zhu</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://vistaqa.github.io">Lihong Chen</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://milanganai.github.io">Milan Ganai</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=LYpwq7EAAAAJ&hl=en">Sean Sedwards</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://uwaterloo.ca/electrical-computer-engineering/profile/k2czarne">Krzysztof Czarnecki</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://profiles.stanford.edu/marco-pavone">Marco Pavone</a><sup>2,3</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Waterloo</span>
+            <span class="author-block"><sup>2</sup>Stanford University</span>
+            <span class="author-block"><sup>3</sup>NVIDIA</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+
+          <div class="publication-links">
+
+            <span class="link-block">
+              <a href="https://vistaqa.github.io"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv (soon)</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://vistaqa.github.io"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">🤗</span>
+                <span>Dataset (soon)</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://vistaqa.github.io"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Evaluation Code (soon)</span>
+              </a>
+            </span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/Figure1.pdf" class="teaser-image" alt="VISTAQA overview figure">
+      <h2 class="subtitle has-text-centered">
+        Joint evaluation of answer correctness and pixel-level evidence across diverse tasks and domains. High text accuracy and high grounding quality do not necessarily imply that both are correct on the same samples. Models may answer correctly on one subset of examples while localize correctly on another, creating a modality gap between reasoning and visual evidence.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Establishing a clear link between model predictions and the visual evidence that supports them is critical for transparency and reliability in multimodal reasoning, yet current multimodal large language model (MLLM) evaluations do not explicitly enforce this alignment. Existing benchmarks assess either textual answer correctness or pixel-level localization in isolation, leaving the coupling of reasoning and grounding an open challenge. We introduce VistaQA, a comprehensive benchmark for joint evaluation of free-form answer correctness and pixel-level evidence grounding in visual question answering. VistaQA comprises 1,157 expert-curated samples spanning six task types and six visual domains, ranging from direct perception to compositional and relational reasoning. VistaQA requires models to not only answer correctly, but to also provide precise segmentation masks that support their answers. It also includes hallucination-aware examples where no valid visual evidence exists. To support this enhanced evaluation, we introduce GROVE, a unified evaluation metric that enforces joint correctness by combining textual accuracy and grounding quality via a per-sample geometric mean, ensuring neither dimension can compensate for deficiencies in the other. Comprehensive experiments across grounding-aware models and hybrid pipelines with general-purpose MLLMs reveal that even the strongest systems achieve limited performance under GROVE, highlighting a substantial gap between answer accuracy and visual evidence alignment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section stats-section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">
+      Dataset at a Glance
+    </h2>
+
+    <div class="columns is-centered is-multiline metric-cards">
+      <div class="column is-one-quarter">
+        <div class="metric-card">
+          <div class="metric-number">1,157</div>
+          <div class="metric-label">expert-curated samples</div>
+        </div>
+      </div>
+
+      <div class="column is-one-quarter">
+        <div class="metric-card">
+          <div class="metric-number">6</div>
+          <div class="metric-label">task types</div>
+        </div>
+      </div>
+
+      <div class="column is-one-quarter">
+        <div class="metric-card">
+          <div class="metric-number">6</div>
+          <div class="metric-label">visual domains</div>
+        </div>
+      </div>
+
+      <div class="column is-one-quarter">
+        <div class="metric-card">
+          <div class="metric-number">314</div>
+          <div class="metric-label">hallucination-aware samples</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered is-variable is-3 mt-5">
+
+      <div class="column">
+        <img src="./static/images/Figure2-a.pdf"
+             class="stats-image"
+             alt="Task distribution">
+      </div>
+
+      <div class="column">
+        <img src="./static/images/Figure2-b.pdf"
+             class="stats-image"
+             alt="Domain distribution">
+      </div>
+
+      <div class="column">
+        <img src="./static/images/Figure2-c.png"
+             class="stats-image"
+             alt="Mask multiplicity">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Tasks and Domains</h2>
+    <div class="columns">
+      <div class="column">
+        <h3 class="title is-4">Task Types</h3>
+        <div class="tags are-medium">
+          <span class="tag is-info is-light">Identification</span>
+          <span class="tag is-info is-light">Attribute</span>
+          <span class="tag is-info is-light">OCR</span>
+          <div style="width:100%"></div>
+          <span class="tag is-link is-light">Spatial</span>
+          <span class="tag is-link is-light">Counting</span>
+          <span class="tag is-link is-light">Comparison</span>
+        </div>
+      </div>
+      <div class="column">
+        <h3 class="title is-4">Domains</h3>
+        <div class="tags are-medium">
+          <span class="tag is-primary is-light">Indoor</span>
+          <span class="tag is-primary is-light">Outdoor</span>
+          <span class="tag is-primary is-light">Autonomous Driving</span>
+          <div style="width:100%"></div>
+          <span class="tag is-success is-light">Robotics</span>
+          <span class="tag is-success is-light">Science</span>
+          <span class="tag is-success is-light">Math</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section grove-section">
+  <div class="container is-max-desktop">
+    
+    <h2 class="title is-3 has-text-centered">
+      GROVE: Joint Answer + Evidence Evaluation
+    </h2>
+
+    <div class="content has-text-justified">
+      <p>
+       GROVE computes a joint score for each sample as the geometric mean of an epsilon-floored binary answer correctness score and an epsilon-floored mask quality score (mIoU). By coupling reasoning and evidence at the sample level, GROVE ensures that strong performance requires models to simultaneously provide both correct answers and precise supporting visual evidence.
+      </p>
+
+      <div class="formula-box">
+
+        <div class="formula-line">
+          <span class="math-var">S</span><sub>a</sub><sup>&prime;</sup>
+          =
+          max(<span class="math-var">S</span><sub>a</sub>, &epsilon;)
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class="math-var">S</span><sub>m</sub><sup>&prime;</sup>
+          =
+          max(<span class="math-var">S</span><sub>m</sub>, &epsilon;)
+        </div>
+
+        <div class="formula-line grove-formula">
+
+          GROVE =
+
+          <span class="fraction">
+            <span class="numerator">1</span>
+            <span class="denominator">N</span>
+          </span>
+
+          <span class="sum-symbol">
+            &sum;
+          </span><sub>i=1</sub><sup>N</sup>
+
+          <span class="sqrt-wrap">
+            <span class="sqrt-symbol">&radic;</span>
+
+            <span class="radicand">
+              <span class="math-var">S</span><sub>a,i</sub><sup>&prime;</sup>
+              &times;
+              <span class="math-var">S</span><sub>m,i</sub><sup>&prime;</sup>
+            </span>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section results-section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        Across reasoning segmentation models, grounding-aware models and hybrid MLLM + SAM3 pipelines, all evaluated systems achieve limited GROVE scores, highlighting the difficulty of simultaneously satisfying textual correctness and pixel-level evidence grounding.
+      </p>
+    </div>
+
+    <h3 class="title is-5 has-text-centered">Per-task and Overall GROVE Scores</h3>
+
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="overall-col">Overall</th>
+            <th>Identification</th>
+            <th>Attribute</th>
+            <th>OCR</th>
+            <th>Spatial</th>
+            <th>Counting</th>
+            <th>Comparison</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr><td>GPT-5.4-T + SAM3</td><td class="overall-col"><strong>45.53</strong></td><td><strong>53.62</strong></td><td>44.73</td><td><strong>44.16</strong></td><td><strong>38.86</strong></td><td><strong>52.21</strong></td><td><strong>38.93</strong></td></tr>
+          <tr><td>Qwen3-VL-4B-I + SAM3</td><td class="overall-col">43.30</td><td>50.36</td><td><strong>47.46</strong></td><td>40.96</td><td>36.32</td><td>45.52</td><td>38.43</td></tr>
+          <tr><td>Qwen3-VL-32B-I + SAM3</td><td class="overall-col">42.72</td><td>48.41</td><td>46.37</td><td>42.14</td><td>35.91</td><td>45.72</td><td>37.41</td></tr>
+          <tr><td>GPT-5.4 + SAM3</td><td class="overall-col">41.50</td><td>48.22</td><td>40.43</td><td>41.33</td><td>35.62</td><td>47.06</td><td>35.86</td></tr>
+          <tr><td>Gemini 3 + SAM3</td><td class="overall-col">39.63</td><td>43.10</td><td>40.11</td><td>42.55</td><td>33.53</td><td>42.81</td><td>35.84</td></tr>
+          <tr><td>VRT-RL</td><td class="overall-col">29.02</td><td>34.92</td><td>28.74</td><td>27.43</td><td>24.44</td><td>29.94</td><td>28.01</td></tr>
+          <tr><td>Sa2VA-8B</td><td class="overall-col">25.74</td><td>26.79</td><td>30.44</td><td>25.36</td><td>22.87</td><td>20.46</td><td>28.36</td></tr>
+          <tr><td>UniPixel-7B</td><td class="overall-col">22.39</td><td>22.24</td><td>28.29</td><td>22.19</td><td>19.90</td><td>15.36</td><td>26.34</td></tr>
+          <tr><td>TreeVGR-7B</td><td class="overall-col">19.03</td><td>18.28</td><td>18.55</td><td>16.42</td><td>17.90</td><td>20.25</td><td>22.65</td></tr>
+          <tr><td>SESAME-7B</td><td class="overall-col">17.02</td><td>17.90</td><td>17.14</td><td>13.62</td><td>18.48</td><td>17.60</td><td>16.90</td></tr>
+          <tr><td>LISA-7B</td><td class="overall-col">15.47</td><td>15.16</td><td>16.92</td><td>12.44</td><td>15.29</td><td>16.56</td><td>16.23</td></tr>
+          <tr><td>GLaMM-7B</td><td class="overall-col">13.53</td><td>14.86</td><td>12.89</td><td>12.34</td><td>14.19</td><td>11.84</td><td>14.70</td></tr>
+          <tr><td>LaSagnA-7B</td><td class="overall-col">12.35</td><td>13.31</td><td>12.03</td><td>11.04</td><td>13.23</td><td>11.14</td><td>13.05</td></tr>
+          <tr><td>Uground-7B</td><td class="overall-col">11.78</td><td>10.95</td><td>11.69</td><td>11.15</td><td>11.57</td><td>12.15</td><td>13.22</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="title is-5 has-text-centered mt-6">Per-domain and Hallucination GROVE Scores</h3>
+
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="overall-col">Non-Hallucination</th>
+            <th class="overall-col">Hallucination</th>
+            <th>Indoor</th>
+            <th>Outdoor</th>
+            <th>Math</th>
+            <th>AV</th>
+            <th>Robotics</th>
+            <th>Science</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr><td>GPT-5.4-T + SAM3</td><td class="overall-col"><strong>44.65</strong></td><td class="overall-col">47.89</td><td><strong>45.39</strong></td><td>45.92</td><td><strong>41.51</strong></td><td>53.18</td><td><strong>47.01</strong></td><td>39.24</td></tr>
+          <tr><td>GPT-5.4 + SAM3</td><td class="overall-col">43.28</td><td class="overall-col">36.72</td><td>42.06</td><td>46.05</td><td>28.99</td><td>53.43</td><td>39.87</td><td>35.54</td></tr>
+          <tr><td>Qwen3-VL-32B-I + SAM3</td><td class="overall-col">37.63</td><td class="overall-col">56.41</td><td>44.27</td><td><strong>47.63</strong></td><td>23.23</td><td>58.40</td><td>40.09</td><td>37.85</td></tr>
+          <tr><td>Qwen3-VL-4B-I + SAM3</td><td class="overall-col">36.81</td><td class="overall-col"><strong>60.72</strong></td><td>43.64</td><td>46.84</td><td>27.37</td><td><strong>59.39</strong></td><td>41.78</td><td>36.80</td></tr>
+          <tr><td>Gemini 3 + SAM3</td><td class="overall-col">33.48</td><td class="overall-col">56.14</td><td>39.37</td><td>39.40</td><td>31.40</td><td>48.42</td><td>37.15</td><td><strong>39.87</strong></td></tr>
+          <tr><td>VRT-RL</td><td class="overall-col">32.09</td><td class="overall-col">20.79</td><td>29.61</td><td>33.06</td><td>24.68</td><td>30.76</td><td>27.74</td><td>27.27</td></tr>
+          <tr><td>Sa2VA-8B</td><td class="overall-col">31.01</td><td class="overall-col">11.58</td><td>22.64</td><td>24.03</td><td>14.87</td><td>36.87</td><td>25.10</td><td>28.09</td></tr>
+          <tr><td>UniPixel-7B</td><td class="overall-col">25.98</td><td class="overall-col">12.75</td><td>21.76</td><td>23.20</td><td>12.90</td><td>28.87</td><td>21.02</td><td>24.15</td></tr>
+          <tr><td>TreeVGR-7B</td><td class="overall-col">17.68</td><td class="overall-col">22.66</td><td>18.41</td><td>20.45</td><td>12.70</td><td>23.51</td><td>19.76</td><td>17.78</td></tr>
+          <tr><td>GLaMM-7B</td><td class="overall-col">14.48</td><td class="overall-col">10.96</td><td>12.82</td><td>13.75</td><td>11.13</td><td>15.70</td><td>13.43</td><td>13.72</td></tr>
+          <tr><td>LISA-7B</td><td class="overall-col">14.01</td><td class="overall-col">19.39</td><td>16.01</td><td>16.41</td><td>12.15</td><td>16.50</td><td>15.97</td><td>14.95</td></tr>
+          <tr><td>LaSagnA-7B</td><td class="overall-col">13.12</td><td class="overall-col">10.28</td><td>11.31</td><td>12.18</td><td>11.07</td><td>14.05</td><td>12.09</td><td>13.07</td></tr>
+          <tr><td>SESAME-7B</td><td class="overall-col">12.17</td><td class="overall-col">30.04</td><td>17.20</td><td>17.68</td><td>11.05</td><td>20.77</td><td>15.92</td><td>17.97</td></tr>
+          <tr><td>Uground-7B</td><td class="overall-col">10.94</td><td class="overall-col">14.03</td><td>11.32</td><td>10.74</td><td>10.78</td><td>11.79</td><td>13.40</td><td>12.38</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section class="section qualitative-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+
+    <div class="content has-text-centered">
+      <p>
+        Explore representative VISTAQA examples by outcome type. Each tab shows four examples from the corresponding qualitative figure.
+      </p>
+    </div>
+
+    <div class="qual-tabs has-text-centered">
+      <button class="qual-tab active" onclick="showQualGroup('both-good', this)"> ✓ Text Answer  ✓ Mask Evidence</button>
+      <button class="qual-tab" onclick="showQualGroup('text-good-mask-bad', this)"> ✓ Text Answer  ✗ Mask Evidence</button>
+      <button class="qual-tab" onclick="showQualGroup('mask-good-text-bad', this)"> ✗ Text Answer  ✓ Mask Evidence</button>
+      <button class="qual-tab" onclick="showQualGroup('both-bad', this)"> ✗ Text Answer  ✗ Mask Evidence</button>
+      <button class="qual-tab" onclick="showQualGroup('hallucination', this)">Hallucination-aware</button>
+    </div>
+
+    <div class="qual-carousel">
+      <button class="qual-arrow qual-prev" onclick="changeQualSlide(-1)" aria-label="Previous qualitative example">&#10094;</button>
+
+      <img id="qual-image"
+           src="./static/images/qual_both-good_1.png"
+           alt="Qualitative VISTAQA result">
+
+      <button class="qual-arrow qual-next" onclick="changeQualSlide(1)" aria-label="Next qualitative example">&#10095;</button>
+    </div>
+
+    <div class="qual-dots has-text-centered">
+      <span class="qual-dot active" onclick="showQualSlide(0)"></span>
+      <span class="qual-dot" onclick="showQualSlide(1)"></span>
+      <span class="qual-dot" onclick="showQualSlide(2)"></span>
+      <span class="qual-dot" onclick="showQualSlide(3)"></span>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+<pre><code>@article{nasrazadani2026vistaqa,
+  title={VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence},
+  author={Nasr Azadani, Mozhgan and Wang, Yimu and Zhu, Yongpeng and Chen, Lihong and Ganai, Milan and Sedwards, Sean and Czarnecki, Krzysztof and Pavone, Marco},
+  year={2026},
+  note={Coming soon}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+
+      <p>
+        VISTAQA is licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>.
+      </p>
+
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+const qualGroups = {
+  "both-good": [
+    "./static/images/qual_both-good_1.png",
+    "./static/images/qual_both-good_2.png",
+    "./static/images/qual_both-good_3.png",
+    "./static/images/qual_both-good_4.png"
+  ],
+  "text-good-mask-bad": [
+    "./static/images/qual_text-good-mask-bad_1.png",
+    "./static/images/qual_text-good-mask-bad_2.png",
+    "./static/images/qual_text-good-mask-bad_3.png",
+    "./static/images/qual_text-good-mask-bad_4.png"
+  ],
+  "mask-good-text-bad": [
+    "./static/images/qual_mask-good-text-bad_1.png",
+    "./static/images/qual_mask-good-text-bad_2.png",
+    "./static/images/qual_mask-good-text-bad_3.png",
+    "./static/images/qual_mask-good-text-bad_4.png"
+  ],
+  "both-bad": [
+    "./static/images/qual_both-bad_1.png",
+    "./static/images/qual_both-bad_2.png",
+    "./static/images/qual_both-bad_3.png",
+    "./static/images/qual_both-bad_4.png"
+  ],
+  "hallucination": [
+    "./static/images/qual_hallucination_1.png",
+    "./static/images/qual_hallucination_2.png",
+    "./static/images/qual_hallucination_3.png",
+    "./static/images/qual_hallucination_4.png"
+  ]
+};
+
+let currentGroup = "both-good";
+let currentSlide = 0;
+
+function showQualGroup(groupName, button){
+  currentGroup = groupName;
+  currentSlide = 0;
+
+  document.querySelectorAll(".qual-tab").forEach(btn => btn.classList.remove("active"));
+  if (button) button.classList.add("active");
+
+  updateQualImage();
+}
+
+function showQualSlide(index){
+  currentSlide = index;
+  updateQualImage();
+}
+
+function changeQualSlide(direction){
+  const totalSlides = qualGroups[currentGroup].length;
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+  updateQualImage();
+}
+
+function updateQualImage(){
+  const image = document.getElementById("qual-image");
+  if (!image) return;
+
+  image.src = qualGroups[currentGroup][currentSlide];
+
+  document.querySelectorAll(".qual-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
+}
+</script>
+
+</body>
+</html>
