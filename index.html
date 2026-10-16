@@ -1,20 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence">
-  <meta name="keywords" content="VISTAQA, GROVE, Visual Question Answering, VQA, Visual Grounding, Segmentation, Multimodal Evaluation, MLLM">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="stylesheet" href="./static/css/vistaqa.css">
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-
+<meta charset="utf-8"/>
+<meta content="VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence" name="description"/>
+<meta content="VISTAQA, GROVE, Visual Question Answering, VQA, Visual Grounding, Segmentation, Multimodal Evaluation, MLLM" name="keywords"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence</title>
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"/>
+<link href="./static/css/bulma.min.css" rel="stylesheet"/>
+<link href="./static/css/fontawesome.all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
+<link href="./static/css/index.css" rel="stylesheet"/>
+<link href="./static/css/vistaqa.css" rel="stylesheet"/>
+<script defer="" src="./static/js/fontawesome.all.min.js"></script>
 <style>
 /* Qualitative carousel */
 .qual-tabs{
@@ -101,417 +100,397 @@
   }
 }
 </style>
-
 </head>
-<body>
-
+<body id="top">
+<nav aria-label="Section navigation" class="vista-nav"><div class="vista-nav-inner"><a class="vista-brand" href="#top"><span class="vista-brand-mark">V</span> VistaQA</a><div class="vista-nav-links"><a href="#overview">Overview</a><a href="#abstract">Abstract</a><a href="#insights">Findings</a><a href="#benchmark">Benchmark</a><a href="#leaderboard">Leaderboard</a><a href="#examples">Qualitative Results</a><a class="vista-nav-cta" href="https://vlm4rwd.github.io/challenges.html#vistaqa">Challenge <i class="fas fa-arrow-right"></i></a></div></div></nav>
 <section class="hero vista-hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
+<div class="hero-body">
+<div class="container is-max-desktop">
+<div class="columns is-centered">
+<div class="column has-text-centered">
 
-          <h1 class="title is-1 publication-title">VISTAQA:</h1>
-
-          <h2 class="subtitle is-3 publication-subtitle"> Benchmarking Joint Visual Question Answering and Pixel-Level Evidence
+<h1 class="title is-1 publication-title">VISTA<span class="vista-qa-accent">QA</span></h1>
+<h2 class="subtitle is-3 publication-subtitle"> Benchmarking Joint Visual Question Answering and Pixel-Level Evidence
             
           </h2>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://mozhgan91.github.io/">Mozhgan Nasr Azadani</a><sup>1,2</sup>,</span>
-            <span class="author-block"><a href="https://yimuwangcs.github.io/">Yimu Wang</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://vistaqa.github.io">Yongpeng Zhu</a><sup>1,*</sup>,</span>
-            <span class="author-block"><a href="https://vistaqa.github.io">Lihong Chen</a><sup>1,*</sup>,</span>
-            <span class="author-block"><a href="https://milanganai.github.io">Milan Ganai</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="https://scholar.google.com/citations?user=LYpwq7EAAAAJ&hl=en">Sean Sedwards</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://profiles.stanford.edu/marco-pavone">Marco Pavone</a><sup>2,3,&dagger;</sup>,</span>
-            <span class="author-block"><a href="https://uwaterloo.ca/electrical-computer-engineering/profile/k2czarne">Krzysztof Czarnecki</a><sup>1,&dagger;</sup></span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Waterloo</span>
-            <span class="author-block"><sup>2</sup>Stanford University</span>
-            <span class="author-block"><sup>3</sup>NVIDIA</span>
-          </div>
-
-          <div class="is-size-6 publication-authors">
-            <span class="author-block"><sup>*</sup>Equal contribution</span>
-            <span class="author-block"><sup>&dagger;</sup>Equal advising</span>
-          </div>
-
-          <div class="publication-links">
-
-            <span class="link-block">
-              <a href="https://arxiv.org/abs/2605.20676"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="ai ai-arxiv"></i>
-                </span>
-                <span>arXiv</span>
-              </a>
-            </span>
-
-            <span class="link-block">
-              <a href="https://huggingface.co/datasets/mozhina/VistaQA"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">🤗</span>
-                <span>Dataset (v1.1)</span>
-              </a>
-            </span>
-
-            <span class="link-block">
-              <a href="https://github.com/VistaQA/VistaQA-Evaluation"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
-                <span>Evaluation Code</span>
-              </a>
-            </span>
-
-          </div>
-
-        </div>
-      </div>
+<div class="is-size-5 publication-authors">
+<span class="author-block"><a href="https://mozhgan91.github.io/">Mozhgan Nasr Azadani</a><sup>1,2</sup>,</span>
+<span class="author-block"><a href="https://yimuwangcs.github.io/">Yimu Wang</a><sup>1</sup>,</span>
+<span class="author-block"><a href="https://vistaqa.github.io">Yongpeng Zhu</a><sup>1,*</sup>,</span>
+<span class="author-block"><a href="https://vistaqa.github.io">Lihong Chen</a><sup>1,*</sup>,</span>
+<span class="author-block"><a href="https://milanganai.github.io">Milan Ganai</a><sup>2</sup>,</span>
+<span class="author-block"><a href="https://scholar.google.com/citations?user=LYpwq7EAAAAJ&amp;hl=en">Sean Sedwards</a><sup>1</sup>,</span>
+<span class="author-block"><a href="https://profiles.stanford.edu/marco-pavone">Marco Pavone</a><sup>2,3,†</sup>,</span>
+<span class="author-block"><a href="https://uwaterloo.ca/electrical-computer-engineering/profile/k2czarne">Krzysztof Czarnecki</a><sup>1,†</sup></span>
+</div>
+<div class="is-size-5 publication-authors">
+<span class="author-block"><sup>1</sup>University of Waterloo</span>
+<span class="author-block"><sup>2</sup>Stanford University</span>
+<span class="author-block"><sup>3</sup>NVIDIA</span>
+</div>
+<div class="is-size-6 publication-authors">
+<span class="author-block"><sup>*</sup>Equal contribution</span>
+<span class="author-block"><sup>†</sup>Equal advising</span>
+</div>
+<!-- Conference acceptance and community challenge -->
+<div class="publication-highlights">
+<div aria-label="Publication venue" class="publication-acceptance">
+<span class="acceptance-icon"><i aria-hidden="true" class="fas fa-award"></i></span>
+<span>Accepted at <strong>NeurIPS 2026</strong></span>
+</div>
+<div class="publication-challenge">
+<div class="challenge-icon"><i aria-hidden="true" class="fas fa-trophy"></i></div>
+<div class="challenge-copy">
+<span class="challenge-eyebrow">NeurIPS 2026 · VLM4RWD Workshop</span>
+<h3>VistaQA Zero-Shot Grounding Challenge</h3>
+<p>Put your vision-language system to the test: evaluate answer correctness and pixel-level visual evidence with GROVE.</p>
+</div>
+<a class="challenge-cta" href="https://vlm4rwd.github.io/challenges.html#vistaqa" rel="noopener noreferrer" target="_blank">
+                Explore challenge <i aria-hidden="true" class="fas fa-arrow-right"></i>
+</a>
+</div>
+</div>
+<div class="publication-links">
+<span class="link-block">
+<a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2605.20676">
+<span class="icon">
+<i class="ai ai-arxiv"></i>
+</span>
+<span>arXiv</span>
+</a>
+</span>
+<span class="link-block">
+<a class="external-link button is-normal is-rounded is-dark" href="https://huggingface.co/datasets/mozhina/VistaQA">
+<span class="icon">🤗</span>
+<span>Dataset (v1.1)</span>
+</a>
+</span>
+<span class="link-block">
+<a class="external-link button is-normal is-rounded is-dark" href="https://github.com/VistaQA/VistaQA-Evaluation">
+<span class="icon">
+<i class="fab fa-github"></i>
+</span>
+<span>Evaluation Code</span>
+</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="vista-story section" id="overview">
+  <div class="container vista-overview-container">
+    <div class="vista-section-intro">
+      <span class="vista-kicker">WHY VISTAQA?</span>
+      <h2 class="vista-display">The right answer.<br><span>The right evidence.</span></h2>
+      <p>Correct answers can point to the wrong pixels—and correct masks can accompany wrong answers. VistaQA evaluates both together.</p>
+    </div>
+    <div class="vista-overview-top">
+      <article class="vista-paper-panel">
+        <div class="vista-paper-heading"><span class="vista-panel-number">01</span><div><span class="vista-panel-kicker">THE ANSWER-ONLY BLIND SPOT</span><h3>Right answer, wrong evidence.</h3></div></div>
+        <p class="vista-panel-description">The count is correct, but the predicted mask misses the evidence. Text accuracy alone would overlook this failure.</p>
+        <img src="./static/images/teaser1.png" alt="Answer-only evaluation failure: correct coconut count but incorrect grounding mask" loading="lazy">
+      </article>
+      <article class="vista-paper-panel">
+        <div class="vista-paper-heading"><span class="vista-panel-number">02</span><div><span class="vista-panel-kicker">THE GROUNDING-ONLY BLIND SPOT</span><h3>Right pixels, wrong answer.</h3></div></div>
+        <p class="vista-panel-description">An excellent segmentation mask cannot rescue an incorrect textual answer. Grounding quality alone misses the problem.</p>
+        <img src="./static/images/teaser3.png" alt="Grounding-only evaluation failure: incorrect color answer paired with a high-overlap mask" loading="lazy">
+      </article>
+      <article class="vista-paper-panel vista-metric-panel">
+        <div class="vista-paper-heading"><span class="vista-panel-number">03</span><div><span class="vista-panel-kicker">OUR SOLUTION</span><h3>Joint evaluation with GROVE.</h3></div></div>
+        <p class="vista-panel-description">VistaQA combines free-form answer correctness and pixel-level evidence quality, so neither can compensate for the other.</p>
+        <img src="./static/images/teaser2.png" alt="VistaQA benchmark summary with task types, domains, expert-curated samples, and GROVE joint metric" loading="lazy">
+        <a class="vista-panel-link" href="#grove">Explore the GROVE metric <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+      </article>
+    </div>
+    <div class="vista-overview-bottom">
+      <article class="vista-paper-panel vista-diversity-panel">
+        <div class="vista-paper-heading"><span class="vista-panel-number">04</span><div><span class="vista-panel-kicker">BREADTH OF EVIDENCE</span><h3>Beyond a single kind of question.</h3></div></div>
+        <p class="vista-panel-description">Six task types span six visual domains, from everyday scenes and scientific diagrams to autonomous driving and robotics.</p>
+        <div class="vista-diversity-stats" aria-label="Benchmark coverage"><span><strong>6</strong> Task Types</span><span><strong>6</strong> Visual Domains</span><span><strong>1,157</strong> Expert-curated Samples</span></div>
+        <img src="./static/images/teaser4.png" alt="Examples of six VistaQA task types across different visual domains with reference evidence masks" loading="lazy">
+      </article>
     </div>
   </div>
 </section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/Figure1.png" class="teaser-image" alt="VISTAQA overview figure">
-      <h2 class="subtitle has-text-centered">
-        Joint evaluation of answer correctness and pixel-level evidence across diverse tasks and domains. High text accuracy and high grounding quality do not necessarily imply that both are correct on the same samples. Models may answer correctly on one subset of examples while localize correctly on another, creating a modality gap between reasoning and visual evidence.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
+<section class="vista-insight-band section" id="insights"><div class="container is-max-desktop">
+<div class="vista-insight-head"><div><span class="vista-kicker">WHAT THE EXPERIMENTS REVEAL</span><h2 class="vista-display small">Accuracy is not the<br/><span>whole story.</span></h2></div><p>Even strong vision-language systems struggle when correct answers must be backed by the correct visual regions.</p></div>
+<div class="vista-insight-grid">
+<article class="vista-insight-feature"><span class="vista-insight-tag">BEST OVERALL BASELINE · GROVE</span><div class="vista-result-value">45.53<span>/100</span></div><div class="vista-result-rule"><span style="width:45.53%"></span></div><h3>Joint accuracy remains limited.</h3><p>GPT-5.4-Thinking + SAM3 achieves the strongest overall GROVE score among evaluated systems.</p><a href="https://arxiv.org/html/2605.20676v1#S4.SS1">See experimental results ↗</a></article>
+<article class="vista-insight-secondary"><span class="vista-insight-tag">THE MODALITY GAP</span><div class="vista-mini-diagram"><span>Correct answer <b>✓</b></span><span>Wrong evidence <b>×</b></span></div><h3>Right answer, wrong pixels.</h3><p>Good textual accuracy and segmentation quality in isolation can hide mismatches on individual examples.</p></article>
+<article class="vista-insight-secondary"><span class="vista-insight-tag">HALLUCINATION AWARENESS</span><div class="vista-micro-stat">314 <small>cases</small></div><h3>Sometimes, no evidence exists.</h3><p>Over 27% of the benchmark tests whether models recognize absent entities and unanswerable queries.</p></article>
+</div></div></section>
+<section class="section" id="abstract">
+<div class="container is-max-desktop">
+<div class="columns is-centered has-text-centered">
+<div class="column is-four-fifths">
+<h2 class="title is-3">Abstract</h2>
+<div class="content has-text-justified">
+<p>
             Establishing a clear link between model predictions and the visual evidence that supports them is critical for transparency and reliability in multimodal reasoning, yet current multimodal large language model (MLLM) evaluations do not explicitly enforce this alignment. Existing benchmarks assess either textual answer correctness or pixel-level localization in isolation, leaving the coupling of reasoning and grounding an open challenge. We introduce VistaQA, a comprehensive benchmark for joint evaluation of free-form answer correctness and pixel-level evidence grounding in visual question answering. VistaQA comprises 1,157 expert-curated samples spanning six task types and six visual domains, ranging from direct perception to compositional and relational reasoning. VistaQA requires models to not only answer correctly, but to also provide precise segmentation masks that support their answers. It also includes hallucination-aware examples where no valid visual evidence exists. To support this enhanced evaluation, we introduce GROVE, a unified evaluation metric that enforces joint correctness by combining textual accuracy and grounding quality via a per-sample geometric mean, ensuring neither dimension can compensate for deficiencies in the other. Comprehensive experiments across grounding-aware models and hybrid pipelines with general-purpose MLLMs reveal that even the strongest systems achieve limited performance under GROVE, highlighting a substantial gap between answer accuracy and visual evidence alignment.
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section class="section stats-section">
-  <div class="container is-max-desktop">
-
-    <h2 class="title is-3 has-text-centered">
+<section class="section stats-section" id="benchmark">
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">
       Dataset at a Glance
     </h2>
-
-    <div class="columns is-centered is-multiline metric-cards">
-      <div class="column is-one-quarter">
-        <div class="metric-card">
-          <div class="metric-number">1,157</div>
-          <div class="metric-label">expert-curated samples</div>
-        </div>
-      </div>
-
-      <div class="column is-one-quarter">
-        <div class="metric-card">
-          <div class="metric-number">6</div>
-          <div class="metric-label">task types</div>
-        </div>
-      </div>
-
-      <div class="column is-one-quarter">
-        <div class="metric-card">
-          <div class="metric-number">6</div>
-          <div class="metric-label">visual domains</div>
-        </div>
-      </div>
-
-      <div class="column is-one-quarter">
-        <div class="metric-card">
-          <div class="metric-number">314</div>
-          <div class="metric-label">hallucination-aware samples</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered is-variable is-3 mt-5">
-
-      <div class="column">
-        <img src="./static/images/Figure2-a.png"
-             class="stats-image"
-             alt="Task distribution">
-      </div>
-
-      <div class="column">
-        <img src="./static/images/Figure2-b.png"
-             class="stats-image"
-             alt="Domain distribution">
-      </div>
-
-      <div class="column">
-        <img src="./static/images/Figure2-c.png"
-             class="stats-image"
-             alt="Mask multiplicity">
-      </div>
-
-    </div>
-
-  </div>
+<div class="columns is-centered is-multiline metric-cards">
+<div class="column is-one-quarter">
+<div class="metric-card">
+<div class="metric-number">1,157</div>
+<div class="metric-label">expert-curated samples</div>
+</div>
+</div>
+<div class="column is-one-quarter">
+<div class="metric-card">
+<div class="metric-number">6</div>
+<div class="metric-label">task types</div>
+</div>
+</div>
+<div class="column is-one-quarter">
+<div class="metric-card">
+<div class="metric-number">6</div>
+<div class="metric-label">visual domains</div>
+</div>
+</div>
+<div class="column is-one-quarter">
+<div class="metric-card">
+<div class="metric-number">314</div>
+<div class="metric-label">hallucination-aware samples</div>
+</div>
+</div>
+</div>
+<div class="columns is-centered is-variable is-3 mt-5">
+<div class="column">
+<img alt="Task distribution" class="stats-image" src="./static/images/Figure2-a.png"/>
+</div>
+<div class="column">
+<img alt="Domain distribution" class="stats-image" src="./static/images/Figure2-b.png"/>
+</div>
+<div class="column">
+<img alt="Mask multiplicity" class="stats-image" src="./static/images/Figure2-c.png"/>
+</div>
+</div>
+</div>
 </section>
-
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Tasks and Domains</h2>
-    <div class="columns">
-      <div class="column">
-        <h3 class="title is-4">Task Types</h3>
-        <div class="tags are-medium">
-          <span class="tag is-info is-light">Identification</span>
-          <span class="tag is-info is-light">Attribute</span>
-          <span class="tag is-info is-light">OCR</span>
-          <div style="width:100%"></div>
-          <span class="tag is-link is-light">Spatial</span>
-          <span class="tag is-link is-light">Counting</span>
-          <span class="tag is-link is-light">Comparison</span>
-        </div>
-      </div>
-      <div class="column">
-        <h3 class="title is-4">Domains</h3>
-        <div class="tags are-medium">
-          <span class="tag is-primary is-light">Indoor</span>
-          <span class="tag is-primary is-light">Outdoor</span>
-          <span class="tag is-primary is-light">Autonomous Driving</span>
-          <div style="width:100%"></div>
-          <span class="tag is-success is-light">Robotics</span>
-          <span class="tag is-success is-light">Science</span>
-          <span class="tag is-success is-light">Math</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">Tasks and Domains</h2>
+<div class="columns">
+<div class="column">
+<h3 class="title is-4">Task Types</h3>
+<div class="tags are-medium">
+<span class="tag is-info is-light">Identification</span>
+<span class="tag is-info is-light">Attribute</span>
+<span class="tag is-info is-light">OCR</span>
+<div style="width:100%"></div>
+<span class="tag is-link is-light">Spatial</span>
+<span class="tag is-link is-light">Counting</span>
+<span class="tag is-link is-light">Comparison</span>
+</div>
+</div>
+<div class="column">
+<h3 class="title is-4">Domains</h3>
+<div class="tags are-medium">
+<span class="tag is-primary is-light">Indoor</span>
+<span class="tag is-primary is-light">Outdoor</span>
+<span class="tag is-primary is-light">Autonomous Driving</span>
+<div style="width:100%"></div>
+<span class="tag is-success is-light">Robotics</span>
+<span class="tag is-success is-light">Science</span>
+<span class="tag is-success is-light">Math</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section class="section grove-section">
-  <div class="container is-max-desktop">
-    
-    <h2 class="title is-3 has-text-centered">
+<section class="section grove-section" id="grove">
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">
       GROVE: Joint Answer + Evidence Evaluation
     </h2>
-
-    <div class="content has-text-justified">
-      <p>
+<div class="content has-text-justified">
+<p>
        GROVE computes a joint score for each sample as the geometric mean of an epsilon-floored binary answer correctness score and an epsilon-floored mask quality score (mIoU). By coupling reasoning and evidence at the sample level, GROVE ensures that strong performance requires models to simultaneously provide both correct answers and precise supporting visual evidence.
       </p>
-
-      <div class="formula-box">
-
-        <div class="formula-line">
-          <span class="math-var">S</span><sub>a</sub><sup>&prime;</sup>
+<div class="formula-box">
+<div class="formula-line">
+<span class="math-var">S</span><sub>a</sub><sup>′</sup>
           =
-          max(<span class="math-var">S</span><sub>a</sub>, &epsilon;)
+          max(<span class="math-var">S</span><sub>a</sub>, ε)
 
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 
 
-          <span class="math-var">S</span><sub>m</sub><sup>&prime;</sup>
+          <span class="math-var">S</span><sub>m</sub><sup>′</sup>
           =
-          max(<span class="math-var">S</span><sub>m</sub>, &epsilon;)
+          max(<span class="math-var">S</span><sub>m</sub>, ε)
         </div>
-
-        <div class="formula-line grove-formula">
+<div class="formula-line grove-formula">
 
           GROVE =
 
           <span class="fraction">
-            <span class="numerator">1</span>
-            <span class="denominator">N</span>
-          </span>
-
-          <span class="sum-symbol">
-            &sum;
+<span class="numerator">1</span>
+<span class="denominator">N</span>
+</span>
+<span class="sum-symbol">
+            ∑
           </span><sub>i=1</sub><sup>N</sup>
-
-          <span class="sqrt-wrap">
-            <span class="sqrt-symbol">&radic;</span>
-
-            <span class="radicand">
-              <span class="math-var">S</span><sub>a,i</sub><sup>&prime;</sup>
-              &times;
-              <span class="math-var">S</span><sub>m,i</sub><sup>&prime;</sup>
-            </span>
-
-          </span>
-
+<span class="sqrt-wrap">
+<span class="sqrt-symbol">√</span>
+<span class="radicand">
+<span class="math-var">S</span><sub>a,i</sub><sup>′</sup>
+              ×
+              <span class="math-var">S</span><sub>m,i</sub><sup>′</sup>
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section results-section"><div class="container lb-wide-container"><div class="lb-heading"><span class="vista-kicker">BENCHMARK RESULTS</span><h2 class="vista-display small" id="leaderboard">The VistaQA <span>leaderboard.</span></h2><p>Explore joint answer-and-evidence performance across 14 evaluated systems. GROVE rewards models only when their answers and visual grounding agree.</p></div>
+<div aria-label="Leaderboard highlights" class="lb-spotlight">
+<div class="lb-spotlight-main"><span class="lb-overline"><i class="fas fa-trophy"></i> BEST OVERALL GROVE</span><div class="lb-winner-line"><strong>45.53</strong><span>out of 100</span></div><span class="lb-winner-model">GPT-5.4-T + SAM3</span><p>The top-performing system still leaves substantial room for better joint reasoning and grounding.</p></div>
+<div class="lb-spotlight-mini"><span class="lb-overline">STRONGEST HALLUCINATION SCORE</span><strong>60.72</strong><span>Qwen3-VL-4B-I + SAM3</span><p>Performance varies notably across evaluation settings.</p></div>
+<div class="lb-spotlight-mini"><span class="lb-overline">EVALUATED SYSTEMS</span><strong>14<span class="lb-unit"> models</span></strong><span>Two complementary breakdowns</span><p>Compare tasks, visual domains, and hallucination-aware samples.</p></div>
+</div>
+<div class="lb-surface"><div class="lb-controls"><div aria-label="Leaderboard view" class="lb-tabs" role="tablist"><button aria-controls="lb-panel-tasks" aria-selected="true" class="lb-tab is-active" data-target="tasks" id="lb-tab-tasks" role="tab" type="button"><i class="fas fa-layer-group"></i> By task</button><button aria-controls="lb-panel-domains" aria-selected="false" class="lb-tab" data-target="domains" id="lb-tab-domains" role="tab" type="button"><i class="fas fa-globe"></i> By domain &amp; hallucination</button></div><div class="lb-guide"><i class="fas fa-info-circle"></i> Higher is better</div></div>
+<div aria-labelledby="lb-tab-tasks" class="lb-panel" id="lb-panel-tasks" role="tabpanel"><div class="lb-panel-intro"><h3>Performance across reasoning tasks</h3><p>Click any column heading to sort models by that metric. Click again to reverse the order.</p></div><div aria-label="Leaderboard scores; click column headers to sort. On narrow screens, scroll horizontally." class="lb-scroll" role="region" tabindex="0"><table class="table is-fullwidth leaderboard-table vista-lb-table" data-kind="task">
+<thead>
+<tr>
+<th aria-sort="none" class="model-col" scope="col"><button aria-label="Sort by Model" class="lb-sort-button" data-column="0" type="button"><span class="lb-sort-label">Model</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="descending" class="overall-col" scope="col"><button aria-label="Sort by Overall" class="lb-sort-button" data-column="1" type="button"><span class="lb-sort-label">Overall</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Identification" class="lb-sort-button" data-column="2" type="button"><span class="lb-sort-label">Identification</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Attribute" class="lb-sort-button" data-column="3" type="button"><span class="lb-sort-label">Attribute</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by OCR" class="lb-sort-button" data-column="4" type="button"><span class="lb-sort-label">OCR</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Spatial" class="lb-sort-button" data-column="5" type="button"><span class="lb-sort-label">Spatial</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Counting" class="lb-sort-button" data-column="6" type="button"><span class="lb-sort-label">Counting</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Comparison" class="lb-sort-button" data-column="7" type="button"><span class="lb-sort-label">Comparison</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+</tr>
+</thead>
+<tbody>
+<tr class="top-entry" data-rank="1"><td class="model-cell"><span aria-label="Rank 1" class="rank-medal">01</span><span class="model-name">GPT-5.4-T + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell" data-score="45.53">45.53<span class="score-bar" style="--score:45.53%"></span></td><td class="score-cell"><strong>53.62</strong></td><td class="score-cell">44.73</td><td class="score-cell"><strong>44.16</strong></td><td class="score-cell"><strong>38.86</strong></td><td class="score-cell"><strong>52.21</strong></td><td class="score-cell"><strong>38.93</strong></td></tr>
+<tr class="top-entry" data-rank="2"><td class="model-cell"><span aria-label="Rank 2" class="rank-medal">02</span><span class="model-name">Qwen3-VL-4B-I + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell" data-score="43.3">43.30<span class="score-bar" style="--score:43.3%"></span></td><td class="score-cell">50.36</td><td class="score-cell"><strong>47.46</strong></td><td class="score-cell">40.96</td><td class="score-cell">36.32</td><td class="score-cell">45.52</td><td class="score-cell">38.43</td></tr>
+<tr class="top-entry" data-rank="3"><td class="model-cell"><span aria-label="Rank 3" class="rank-medal">03</span><span class="model-name">Qwen3-VL-32B-I + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell" data-score="42.72">42.72<span class="score-bar" style="--score:42.72%"></span></td><td class="score-cell">48.41</td><td class="score-cell">46.37</td><td class="score-cell">42.14</td><td class="score-cell">35.91</td><td class="score-cell">45.72</td><td class="score-cell">37.41</td></tr>
+<tr><td class="model-cell"><span class="model-name">GPT-5.4 + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell" data-score="41.5">41.50<span class="score-bar" style="--score:41.5%"></span></td><td class="score-cell">48.22</td><td class="score-cell">40.43</td><td class="score-cell">41.33</td><td class="score-cell">35.62</td><td class="score-cell">47.06</td><td class="score-cell">35.86</td></tr>
+<tr><td class="model-cell"><span class="model-name">Gemini 3 + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell" data-score="39.63">39.63<span class="score-bar" style="--score:39.63%"></span></td><td class="score-cell">43.10</td><td class="score-cell">40.11</td><td class="score-cell">42.55</td><td class="score-cell">33.53</td><td class="score-cell">42.81</td><td class="score-cell">35.84</td></tr>
+<tr><td class="model-cell"><span class="model-name">VRT-RL</span></td><td class="overall-col score-cell" data-score="29.02">29.02<span class="score-bar" style="--score:29.02%"></span></td><td class="score-cell">34.92</td><td class="score-cell">28.74</td><td class="score-cell">27.43</td><td class="score-cell">24.44</td><td class="score-cell">29.94</td><td class="score-cell">28.01</td></tr>
+<tr><td class="model-cell"><span class="model-name">Sa2VA-8B</span></td><td class="overall-col score-cell" data-score="25.74">25.74<span class="score-bar" style="--score:25.74%"></span></td><td class="score-cell">26.79</td><td class="score-cell">30.44</td><td class="score-cell">25.36</td><td class="score-cell">22.87</td><td class="score-cell">20.46</td><td class="score-cell">28.36</td></tr>
+<tr><td class="model-cell"><span class="model-name">UniPixel-7B</span></td><td class="overall-col score-cell" data-score="22.39">22.39<span class="score-bar" style="--score:22.39%"></span></td><td class="score-cell">22.24</td><td class="score-cell">28.29</td><td class="score-cell">22.19</td><td class="score-cell">19.90</td><td class="score-cell">15.36</td><td class="score-cell">26.34</td></tr>
+<tr><td class="model-cell"><span class="model-name">TreeVGR-7B</span></td><td class="overall-col score-cell" data-score="19.03">19.03<span class="score-bar" style="--score:19.03%"></span></td><td class="score-cell">18.28</td><td class="score-cell">18.55</td><td class="score-cell">16.42</td><td class="score-cell">17.90</td><td class="score-cell">20.25</td><td class="score-cell">22.65</td></tr>
+<tr><td class="model-cell"><span class="model-name">SESAME-7B</span></td><td class="overall-col score-cell" data-score="17.02">17.02<span class="score-bar" style="--score:17.02%"></span></td><td class="score-cell">17.90</td><td class="score-cell">17.14</td><td class="score-cell">13.62</td><td class="score-cell">18.48</td><td class="score-cell">17.60</td><td class="score-cell">16.90</td></tr>
+<tr><td class="model-cell"><span class="model-name">LISA-7B</span></td><td class="overall-col score-cell" data-score="15.47">15.47<span class="score-bar" style="--score:15.47%"></span></td><td class="score-cell">15.16</td><td class="score-cell">16.92</td><td class="score-cell">12.44</td><td class="score-cell">15.29</td><td class="score-cell">16.56</td><td class="score-cell">16.23</td></tr>
+<tr><td class="model-cell"><span class="model-name">GLaMM-7B</span></td><td class="overall-col score-cell" data-score="13.53">13.53<span class="score-bar" style="--score:13.53%"></span></td><td class="score-cell">14.86</td><td class="score-cell">12.89</td><td class="score-cell">12.34</td><td class="score-cell">14.19</td><td class="score-cell">11.84</td><td class="score-cell">14.70</td></tr>
+<tr><td class="model-cell"><span class="model-name">LaSagnA-7B</span></td><td class="overall-col score-cell" data-score="12.35">12.35<span class="score-bar" style="--score:12.35%"></span></td><td class="score-cell">13.31</td><td class="score-cell">12.03</td><td class="score-cell">11.04</td><td class="score-cell">13.23</td><td class="score-cell">11.14</td><td class="score-cell">13.05</td></tr>
+<tr><td class="model-cell"><span class="model-name">Uground-7B</span></td><td class="overall-col score-cell" data-score="11.78">11.78<span class="score-bar" style="--score:11.78%"></span></td><td class="score-cell">10.95</td><td class="score-cell">11.69</td><td class="score-cell">11.15</td><td class="score-cell">11.57</td><td class="score-cell">12.15</td><td class="score-cell">13.22</td></tr>
+</tbody>
+</table></div></div>
+<div aria-labelledby="lb-tab-domains" class="lb-panel" hidden="" id="lb-panel-domains" role="tabpanel"><div class="lb-panel-intro"><h3>Performance across domains &amp; hallucination settings</h3><p>Click any column heading to sort models by that metric. Click again to reverse the order.</p></div><div aria-label="Leaderboard scores; click column headers to sort. On narrow screens, scroll horizontally." class="lb-scroll" role="region" tabindex="0"><table class="table is-fullwidth leaderboard-table vista-lb-table" data-kind="domain">
+<thead>
+<tr>
+<th aria-sort="none" class="model-col" scope="col"><button aria-label="Sort by Model" class="lb-sort-button" data-column="0" type="button"><span class="lb-sort-label">Model</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" class="overall-col" scope="col"><button aria-label="Sort by Non-Hallucination" class="lb-sort-button" data-column="1" type="button"><span class="lb-sort-label">Non-Hallucination</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" class="overall-col" scope="col"><button aria-label="Sort by Hallucination" class="lb-sort-button" data-column="2" type="button"><span class="lb-sort-label">Hallucination</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Indoor" class="lb-sort-button" data-column="3" type="button"><span class="lb-sort-label">Indoor</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Outdoor" class="lb-sort-button" data-column="4" type="button"><span class="lb-sort-label">Outdoor</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Math" class="lb-sort-button" data-column="5" type="button"><span class="lb-sort-label">Math</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by AV" class="lb-sort-button" data-column="6" type="button"><span class="lb-sort-label">AV</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Robotics" class="lb-sort-button" data-column="7" type="button"><span class="lb-sort-label">Robotics</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+<th aria-sort="none" scope="col"><button aria-label="Sort by Science" class="lb-sort-button" data-column="8" type="button"><span class="lb-sort-label">Science</span><span aria-hidden="true" class="lb-sort-icon">↕</span></button></th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="model-cell"><span class="model-name">GPT-5.4-T + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell"><strong>44.65</strong></td><td class="overall-col score-cell">47.89</td><td class="score-cell"><strong>45.39</strong></td><td class="score-cell">45.92</td><td class="score-cell"><strong>41.51</strong></td><td class="score-cell">53.18</td><td class="score-cell"><strong>47.01</strong></td><td class="score-cell">39.24</td></tr>
+<tr><td class="model-cell"><span class="model-name">GPT-5.4 + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell">43.28</td><td class="overall-col score-cell">36.72</td><td class="score-cell">42.06</td><td class="score-cell">46.05</td><td class="score-cell">28.99</td><td class="score-cell">53.43</td><td class="score-cell">39.87</td><td class="score-cell">35.54</td></tr>
+<tr><td class="model-cell"><span class="model-name">Qwen3-VL-32B-I + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell">37.63</td><td class="overall-col score-cell">56.41</td><td class="score-cell">44.27</td><td class="score-cell"><strong>47.63</strong></td><td class="score-cell">23.23</td><td class="score-cell">58.40</td><td class="score-cell">40.09</td><td class="score-cell">37.85</td></tr>
+<tr><td class="model-cell"><span class="model-name">Qwen3-VL-4B-I + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell">36.81</td><td class="overall-col score-cell"><strong>60.72</strong></td><td class="score-cell">43.64</td><td class="score-cell">46.84</td><td class="score-cell">27.37</td><td class="score-cell"><strong>59.39</strong></td><td class="score-cell">41.78</td><td class="score-cell">36.80</td></tr>
+<tr><td class="model-cell"><span class="model-name">Gemini 3 + SAM3</span><span class="model-tag">MLLM + SAM3</span></td><td class="overall-col score-cell">33.48</td><td class="overall-col score-cell">56.14</td><td class="score-cell">39.37</td><td class="score-cell">39.40</td><td class="score-cell">31.40</td><td class="score-cell">48.42</td><td class="score-cell">37.15</td><td class="score-cell"><strong>39.87</strong></td></tr>
+<tr><td class="model-cell"><span class="model-name">VRT-RL</span></td><td class="overall-col score-cell">32.09</td><td class="overall-col score-cell">20.79</td><td class="score-cell">29.61</td><td class="score-cell">33.06</td><td class="score-cell">24.68</td><td class="score-cell">30.76</td><td class="score-cell">27.74</td><td class="score-cell">27.27</td></tr>
+<tr><td class="model-cell"><span class="model-name">Sa2VA-8B</span></td><td class="overall-col score-cell">31.01</td><td class="overall-col score-cell">11.58</td><td class="score-cell">22.64</td><td class="score-cell">24.03</td><td class="score-cell">14.87</td><td class="score-cell">36.87</td><td class="score-cell">25.10</td><td class="score-cell">28.09</td></tr>
+<tr><td class="model-cell"><span class="model-name">UniPixel-7B</span></td><td class="overall-col score-cell">25.98</td><td class="overall-col score-cell">12.75</td><td class="score-cell">21.76</td><td class="score-cell">23.20</td><td class="score-cell">12.90</td><td class="score-cell">28.87</td><td class="score-cell">21.02</td><td class="score-cell">24.15</td></tr>
+<tr><td class="model-cell"><span class="model-name">TreeVGR-7B</span></td><td class="overall-col score-cell">17.68</td><td class="overall-col score-cell">22.66</td><td class="score-cell">18.41</td><td class="score-cell">20.45</td><td class="score-cell">12.70</td><td class="score-cell">23.51</td><td class="score-cell">19.76</td><td class="score-cell">17.78</td></tr>
+<tr><td class="model-cell"><span class="model-name">GLaMM-7B</span></td><td class="overall-col score-cell">14.48</td><td class="overall-col score-cell">10.96</td><td class="score-cell">12.82</td><td class="score-cell">13.75</td><td class="score-cell">11.13</td><td class="score-cell">15.70</td><td class="score-cell">13.43</td><td class="score-cell">13.72</td></tr>
+<tr><td class="model-cell"><span class="model-name">LISA-7B</span></td><td class="overall-col score-cell">14.01</td><td class="overall-col score-cell">19.39</td><td class="score-cell">16.01</td><td class="score-cell">16.41</td><td class="score-cell">12.15</td><td class="score-cell">16.50</td><td class="score-cell">15.97</td><td class="score-cell">14.95</td></tr>
+<tr><td class="model-cell"><span class="model-name">LaSagnA-7B</span></td><td class="overall-col score-cell">13.12</td><td class="overall-col score-cell">10.28</td><td class="score-cell">11.31</td><td class="score-cell">12.18</td><td class="score-cell">11.07</td><td class="score-cell">14.05</td><td class="score-cell">12.09</td><td class="score-cell">13.07</td></tr>
+<tr><td class="model-cell"><span class="model-name">SESAME-7B</span></td><td class="overall-col score-cell">12.17</td><td class="overall-col score-cell">30.04</td><td class="score-cell">17.20</td><td class="score-cell">17.68</td><td class="score-cell">11.05</td><td class="score-cell">20.77</td><td class="score-cell">15.92</td><td class="score-cell">17.97</td></tr>
+<tr><td class="model-cell"><span class="model-name">Uground-7B</span></td><td class="overall-col score-cell">10.94</td><td class="overall-col score-cell">14.03</td><td class="score-cell">11.32</td><td class="score-cell">10.74</td><td class="score-cell">10.78</td><td class="score-cell">11.79</td><td class="score-cell">13.40</td><td class="score-cell">12.38</td></tr>
+</tbody>
+</table></div></div>
+<div class="lb-footer"><span><i class="fas fa-chart-bar"></i> All values are GROVE scores from the VistaQA evaluation.</span><a href="https://arxiv.org/abs/2605.20676" rel="noopener noreferrer" target="_blank">Evaluation details <i class="fas fa-arrow-up-right-from-square"></i></a></div></div></div></section>
+<section class="section qualitative-section" id="examples">
+  <div class="container qual-container">
+    <div class="lb-heading qual-heading">
+      <span class="vista-kicker">VISUAL EVIDENCE IN PRACTICE</span>
+      <h2 class="vista-display small">Qualitative <span>results.</span></h2>
+      <p>What happens when answers and supporting regions agree—or fail independently? Explore five outcome categories using examples from the paper.</p>
+    </div>
+    <div class="qual-surface">
+      <div class="qual-surface-head">
+        <div class="qual-intro">
+          <span class="qual-overline">EXPLORE OUTCOMES</span>
+          <h3>Answer accuracy × evidence quality</h3>
+          <p>Choose an outcome to browse four representative examples.</p>
         </div>
-
+        <span class="qual-example-count" id="qual-count" aria-live="polite">Example 1 of 4</span>
       </div>
-
+      <div class="qual-tabs" role="group" aria-label="Qualitative outcome categories">
+        <button type="button" class="qual-tab active" aria-pressed="true" onclick="showQualGroup('both-good', this)"><span class="qual-state good">✓ Answer</span><span class="qual-state good">✓ Mask</span></button>
+        <button type="button" class="qual-tab" aria-pressed="false" onclick="showQualGroup('text-good-mask-bad', this)"><span class="qual-state good">✓ Answer</span><span class="qual-state bad">✗ Mask</span></button>
+        <button type="button" class="qual-tab" aria-pressed="false" onclick="showQualGroup('mask-good-text-bad', this)"><span class="qual-state bad">✗ Answer</span><span class="qual-state good">✓ Mask</span></button>
+        <button type="button" class="qual-tab" aria-pressed="false" onclick="showQualGroup('both-bad', this)"><span class="qual-state bad">✗ Answer</span><span class="qual-state bad">✗ Mask</span></button>
+        <button type="button" class="qual-tab" aria-pressed="false" onclick="showQualGroup('hallucination', this)"><i class="fas fa-search" aria-hidden="true"></i> Hallucination-aware</button>
+      </div>
+      <div class="qual-viewer">
+        <div class="qual-viewer-label"><span id="qual-category">Correct answer · Correct mask</span><span>VISTAQA EVALUATION EXAMPLE</span></div>
+        <div class="qual-carousel">
+          <button type="button" aria-label="Previous qualitative example" class="qual-arrow qual-prev" onclick="changeQualSlide(-1)"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <img alt="Qualitative VistaQA result" id="qual-image" src="./static/images/qual_both-good_1.png" loading="lazy"/>
+          <button type="button" aria-label="Next qualitative example" class="qual-arrow qual-next" onclick="changeQualSlide(1)"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
+        <div class="qual-viewer-footer">
+          <span><i class="fas fa-images" aria-hidden="true"></i> Paper examples</span>
+          <div class="qual-dots" aria-label="Select example">
+            <button type="button" class="qual-dot active" aria-label="Example 1" aria-current="true" onclick="showQualSlide(0)"></button>
+            <button type="button" class="qual-dot" aria-label="Example 2" onclick="showQualSlide(1)"></button>
+            <button type="button" class="qual-dot" aria-label="Example 3" onclick="showQualSlide(2)"></button>
+            <button type="button" class="qual-dot" aria-label="Example 4" onclick="showQualSlide(3)"></button>
+          </div>
+          <span class="qual-viewer-hint">Use arrows to browse <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-
-<section class="section results-section">
-  <div class="container is-max-desktop">
-
-    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
-
-    <div class="content has-text-justified">
-      <p>
-        Across reasoning segmentation models, grounding-aware models and hybrid MLLM + SAM3 pipelines, all evaluated systems achieve limited GROVE scores, highlighting the difficulty of simultaneously satisfying textual correctness and pixel-level evidence grounding.
-      </p>
-    </div>
-
-    <h3 class="title is-5 has-text-centered">Per-task and Overall GROVE Scores</h3>
-
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth leaderboard-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th class="overall-col">Overall</th>
-            <th>Identification</th>
-            <th>Attribute</th>
-            <th>OCR</th>
-            <th>Spatial</th>
-            <th>Counting</th>
-            <th>Comparison</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr><td>GPT-5.4-T + SAM3</td><td class="overall-col"><strong>45.53</strong></td><td><strong>53.62</strong></td><td>44.73</td><td><strong>44.16</strong></td><td><strong>38.86</strong></td><td><strong>52.21</strong></td><td><strong>38.93</strong></td></tr>
-          <tr><td>Qwen3-VL-4B-I + SAM3</td><td class="overall-col">43.30</td><td>50.36</td><td><strong>47.46</strong></td><td>40.96</td><td>36.32</td><td>45.52</td><td>38.43</td></tr>
-          <tr><td>Qwen3-VL-32B-I + SAM3</td><td class="overall-col">42.72</td><td>48.41</td><td>46.37</td><td>42.14</td><td>35.91</td><td>45.72</td><td>37.41</td></tr>
-          <tr><td>GPT-5.4 + SAM3</td><td class="overall-col">41.50</td><td>48.22</td><td>40.43</td><td>41.33</td><td>35.62</td><td>47.06</td><td>35.86</td></tr>
-          <tr><td>Gemini 3 + SAM3</td><td class="overall-col">39.63</td><td>43.10</td><td>40.11</td><td>42.55</td><td>33.53</td><td>42.81</td><td>35.84</td></tr>
-          <tr><td>VRT-RL</td><td class="overall-col">29.02</td><td>34.92</td><td>28.74</td><td>27.43</td><td>24.44</td><td>29.94</td><td>28.01</td></tr>
-          <tr><td>Sa2VA-8B</td><td class="overall-col">25.74</td><td>26.79</td><td>30.44</td><td>25.36</td><td>22.87</td><td>20.46</td><td>28.36</td></tr>
-          <tr><td>UniPixel-7B</td><td class="overall-col">22.39</td><td>22.24</td><td>28.29</td><td>22.19</td><td>19.90</td><td>15.36</td><td>26.34</td></tr>
-          <tr><td>TreeVGR-7B</td><td class="overall-col">19.03</td><td>18.28</td><td>18.55</td><td>16.42</td><td>17.90</td><td>20.25</td><td>22.65</td></tr>
-          <tr><td>SESAME-7B</td><td class="overall-col">17.02</td><td>17.90</td><td>17.14</td><td>13.62</td><td>18.48</td><td>17.60</td><td>16.90</td></tr>
-          <tr><td>LISA-7B</td><td class="overall-col">15.47</td><td>15.16</td><td>16.92</td><td>12.44</td><td>15.29</td><td>16.56</td><td>16.23</td></tr>
-          <tr><td>GLaMM-7B</td><td class="overall-col">13.53</td><td>14.86</td><td>12.89</td><td>12.34</td><td>14.19</td><td>11.84</td><td>14.70</td></tr>
-          <tr><td>LaSagnA-7B</td><td class="overall-col">12.35</td><td>13.31</td><td>12.03</td><td>11.04</td><td>13.23</td><td>11.14</td><td>13.05</td></tr>
-          <tr><td>Uground-7B</td><td class="overall-col">11.78</td><td>10.95</td><td>11.69</td><td>11.15</td><td>11.57</td><td>12.15</td><td>13.22</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="title is-5 has-text-centered mt-6">Per-domain and Hallucination GROVE Scores</h3>
-
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth leaderboard-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th class="overall-col">Non-Hallucination</th>
-            <th class="overall-col">Hallucination</th>
-            <th>Indoor</th>
-            <th>Outdoor</th>
-            <th>Math</th>
-            <th>AV</th>
-            <th>Robotics</th>
-            <th>Science</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr><td>GPT-5.4-T + SAM3</td><td class="overall-col"><strong>44.65</strong></td><td class="overall-col">47.89</td><td><strong>45.39</strong></td><td>45.92</td><td><strong>41.51</strong></td><td>53.18</td><td><strong>47.01</strong></td><td>39.24</td></tr>
-          <tr><td>GPT-5.4 + SAM3</td><td class="overall-col">43.28</td><td class="overall-col">36.72</td><td>42.06</td><td>46.05</td><td>28.99</td><td>53.43</td><td>39.87</td><td>35.54</td></tr>
-          <tr><td>Qwen3-VL-32B-I + SAM3</td><td class="overall-col">37.63</td><td class="overall-col">56.41</td><td>44.27</td><td><strong>47.63</strong></td><td>23.23</td><td>58.40</td><td>40.09</td><td>37.85</td></tr>
-          <tr><td>Qwen3-VL-4B-I + SAM3</td><td class="overall-col">36.81</td><td class="overall-col"><strong>60.72</strong></td><td>43.64</td><td>46.84</td><td>27.37</td><td><strong>59.39</strong></td><td>41.78</td><td>36.80</td></tr>
-          <tr><td>Gemini 3 + SAM3</td><td class="overall-col">33.48</td><td class="overall-col">56.14</td><td>39.37</td><td>39.40</td><td>31.40</td><td>48.42</td><td>37.15</td><td><strong>39.87</strong></td></tr>
-          <tr><td>VRT-RL</td><td class="overall-col">32.09</td><td class="overall-col">20.79</td><td>29.61</td><td>33.06</td><td>24.68</td><td>30.76</td><td>27.74</td><td>27.27</td></tr>
-          <tr><td>Sa2VA-8B</td><td class="overall-col">31.01</td><td class="overall-col">11.58</td><td>22.64</td><td>24.03</td><td>14.87</td><td>36.87</td><td>25.10</td><td>28.09</td></tr>
-          <tr><td>UniPixel-7B</td><td class="overall-col">25.98</td><td class="overall-col">12.75</td><td>21.76</td><td>23.20</td><td>12.90</td><td>28.87</td><td>21.02</td><td>24.15</td></tr>
-          <tr><td>TreeVGR-7B</td><td class="overall-col">17.68</td><td class="overall-col">22.66</td><td>18.41</td><td>20.45</td><td>12.70</td><td>23.51</td><td>19.76</td><td>17.78</td></tr>
-          <tr><td>GLaMM-7B</td><td class="overall-col">14.48</td><td class="overall-col">10.96</td><td>12.82</td><td>13.75</td><td>11.13</td><td>15.70</td><td>13.43</td><td>13.72</td></tr>
-          <tr><td>LISA-7B</td><td class="overall-col">14.01</td><td class="overall-col">19.39</td><td>16.01</td><td>16.41</td><td>12.15</td><td>16.50</td><td>15.97</td><td>14.95</td></tr>
-          <tr><td>LaSagnA-7B</td><td class="overall-col">13.12</td><td class="overall-col">10.28</td><td>11.31</td><td>12.18</td><td>11.07</td><td>14.05</td><td>12.09</td><td>13.07</td></tr>
-          <tr><td>SESAME-7B</td><td class="overall-col">12.17</td><td class="overall-col">30.04</td><td>17.20</td><td>17.68</td><td>11.05</td><td>20.77</td><td>15.92</td><td>17.97</td></tr>
-          <tr><td>Uground-7B</td><td class="overall-col">10.94</td><td class="overall-col">14.03</td><td>11.32</td><td>10.74</td><td>10.78</td><td>11.79</td><td>13.40</td><td>12.38</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-</section>
-
-<section class="section qualitative-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
-
-    <div class="content has-text-centered">
-      <p>
-        Explore representative VISTAQA examples by outcome type. Each tab shows four examples from the corresponding qualitative figure.
-      </p>
-    </div>
-
-    <div class="qual-tabs has-text-centered">
-      <button class="qual-tab active" onclick="showQualGroup('both-good', this)"> ✓ Text Answer  ✓ Mask Evidence</button>
-      <button class="qual-tab" onclick="showQualGroup('text-good-mask-bad', this)"> ✓ Text Answer  ✗ Mask Evidence</button>
-      <button class="qual-tab" onclick="showQualGroup('mask-good-text-bad', this)"> ✗ Text Answer  ✓ Mask Evidence</button>
-      <button class="qual-tab" onclick="showQualGroup('both-bad', this)"> ✗ Text Answer  ✗ Mask Evidence</button>
-      <button class="qual-tab" onclick="showQualGroup('hallucination', this)">Hallucination-aware</button>
-    </div>
-
-    <div class="qual-carousel">
-      <button class="qual-arrow qual-prev" onclick="changeQualSlide(-1)" aria-label="Previous qualitative example">&#10094;</button>
-
-      <img id="qual-image"
-           src="./static/images/qual_both-good_1.png"
-           alt="Qualitative VISTAQA result">
-
-      <button class="qual-arrow qual-next" onclick="changeQualSlide(1)" aria-label="Next qualitative example">&#10095;</button>
-    </div>
-
-    <div class="qual-dots has-text-centered">
-      <span class="qual-dot active" onclick="showQualSlide(0)"></span>
-      <span class="qual-dot" onclick="showQualSlide(1)"></span>
-      <span class="qual-dot" onclick="showQualSlide(2)"></span>
-      <span class="qual-dot" onclick="showQualSlide(3)"></span>
-    </div>
-  </div>
-</section>
-
-
-
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">BibTeX</h2>
 <pre><code>@article{nasrazadani2026vistaqa,
   title={VISTAQA: Benchmarking Joint Visual Question Answering and Pixel-Level Evidence},
   author={Nasr Azadani, Mozhgan and Wang, Yimu and Zhu, Yongpeng and Chen, Lihong and Ganai, Milan and Sedwards, Sean and Pavone, Marco and Czarnecki, Krzysztof},
   year={2026},
   note={arXiv:2605.20676}
 }</code></pre>
-  </div>
+</div>
 </section>
-
 <footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-
-      <p>
+<div class="container">
+<div class="content has-text-centered">
+<p>
         VISTAQA is licensed under
         <a href="https://creativecommons.org/licenses/by/4.0/">
           CC BY 4.0
         </a>.
       </p>
-
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-
-
-
 <script>
 const qualGroups = {
   "both-good": [
@@ -553,8 +532,8 @@ function showQualGroup(groupName, button){
   currentGroup = groupName;
   currentSlide = 0;
 
-  document.querySelectorAll(".qual-tab").forEach(btn => btn.classList.remove("active"));
-  if (button) button.classList.add("active");
+  document.querySelectorAll(".qual-tab").forEach(btn => { btn.classList.remove("active"); btn.setAttribute("aria-pressed", "false"); });
+  if (button) { button.classList.add("active"); button.setAttribute("aria-pressed", "true"); }
 
   updateQualImage();
 }
@@ -575,12 +554,69 @@ function updateQualImage(){
   if (!image) return;
 
   image.src = qualGroups[currentGroup][currentSlide];
-
+  const names = {
+    "both-good": "Correct answer · Correct mask",
+    "text-good-mask-bad": "Correct answer · Incorrect mask",
+    "mask-good-text-bad": "Incorrect answer · Correct mask",
+    "both-bad": "Incorrect answer · Incorrect mask",
+    "hallucination": "Hallucination-aware examples"
+  };
+  const category = document.getElementById("qual-category");
+  const count = document.getElementById("qual-count");
+  if (category) category.textContent = names[currentGroup];
+  if (count) count.textContent = `Example ${currentSlide + 1} of ${qualGroups[currentGroup].length}`;
+  image.alt = `${names[currentGroup]}, example ${currentSlide + 1}`;
   document.querySelectorAll(".qual-dot").forEach((dot, i) => {
     dot.classList.toggle("active", i === currentSlide);
+    if (i === currentSlide) dot.setAttribute("aria-current", "true");
+    else dot.removeAttribute("aria-current");
   });
 }
 </script>
-
+<script>document.addEventListener('DOMContentLoaded', function () {
+  const tabs = Array.from(document.querySelectorAll('.lb-tab'));
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(t => {const active=t===tab;t.classList.toggle('is-active',active);t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById('lb-panel-'+t.dataset.target).hidden=!active;});
+  }));
+  document.querySelector('.lb-tabs')?.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;e.preventDefault();const n=tabs.indexOf(document.activeElement),next=tabs[(n+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];next.focus();next.click();});
+});</script>
+<script>
+/* Sort either leaderboard independently, without modifying source scores. */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.vista-lb-table').forEach(function (table) {
+    const headers = Array.from(table.querySelectorAll('thead th'));
+    const body = table.tBodies[0];
+    const originalRows = Array.from(body.rows);
+    const ordinal = new Map(originalRows.map((row, index) => [row,index]));
+    let activeColumn = table.dataset.kind === 'task' ? 1 : -1;
+    let direction = 'desc';
+    function apply(column, dir) {
+      const rows = Array.from(body.rows);
+      rows.sort(function (a,b) {
+        const av = a.cells[column].textContent.trim();
+        const bv = b.cells[column].textContent.trim();
+        const cmp = column===0 ? av.localeCompare(bv,undefined,{sensitivity:'base'}) : Number(av)-Number(bv);
+        return (dir==='asc' ? cmp : -cmp) || ordinal.get(a)-ordinal.get(b);
+      });
+      rows.forEach(row => body.appendChild(row));
+      headers.forEach(function (h,i) {
+        const selected=i===column;
+        h.setAttribute('aria-sort',selected?(dir==='asc'?'ascending':'descending'):'none');
+        const icon=h.querySelector('.lb-sort-icon');
+        if(icon)icon.textContent=selected?(dir==='asc'?'↑':'↓'):'↕';
+        h.classList.toggle('lb-sorted',selected);
+      });
+      activeColumn=column;
+      direction=dir;
+    }
+    headers.forEach(function (header,index) {
+      header.querySelector('button').addEventListener('click',function () {
+        apply(index, activeColumn===index && direction==='desc'?'asc':'desc');
+      });
+    });
+    if(activeColumn>=0) apply(activeColumn,'desc');
+  });
+});
+</script>
 </body>
 </html>
